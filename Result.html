@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="mycss.css">
 
     <style>
-        
         .btn-oval {
             border-radius: 50px;
             padding-left: 30px;
@@ -34,9 +33,7 @@
         .result2 {
             height: 70vh;
         }
-
     </style>
-
 </head>
 
 <body>
@@ -44,26 +41,23 @@
         <div id="title" class="text-center bounce">
             <img id="resultImage" src="img/result/test_result_apple.png" alt="" class="result m-auto">
 
-            <div>   
+            <div>
                 <b class="btn"> <b>右鍵下載圖片以儲存測驗結果，順便分享給你所有的捧油！ </b></b>
                 <br>
                 <button id="startButton" class="btn btn-light btn-outline-warning btn-lg btn-oval" onclick="goToNext()">再測一次</button>
                 <button id="CopyButton" class="btn btn-light btn-outline-warning btn-lg btn-oval" style="margin-left: 10px;" onclick="copyToClipboard()">分享測驗</button>
             </div>
-
         </div>
     </div>
 
-
     <div class="bg2 d-flex d-lg-none">
         <div id="title" class="text-center bounce">
-            <img id="resultImage" src="img/result/test_result_apple.png" alt="" class="result2 m-auto">
- 
-            <b class="btn"> <b>長按圖片以儲存測驗結果， <br>順便分享給你所有的捧油！ </b></b>
+            <img id="resultImageMobile" src="img/result/test_result_apple.png" alt="" class="result2 m-auto">
 
+            <b class="btn"> <b>長按圖片以儲存測驗結果， <br>順便分享給你所有的捧油！ </b></b>
             <br>
-            <button id="startButton" class="btn btn-light btn-outline-warning btn-lg btn-oval" onclick="goToNext()">再測一次</button>
-            <button id="CopyButton" class="btn btn-light btn-outline-warning btn-lg btn-oval" style="margin-left: 10px;" onclick="copyToClipboard()">分享測驗</button>
+            <button id="startButtonMobile" class="btn btn-light btn-outline-warning btn-lg btn-oval" onclick="goToNext()">再測一次</button>
+            <button id="CopyButtonMobile" class="btn btn-light btn-outline-warning btn-lg btn-oval" style="margin-left: 10px;" onclick="copyToClipboard()">分享測驗</button>
         </div>
     </div>
 
@@ -83,7 +77,7 @@
             window.location.href = 'https://yeeve0106.github.io/fruit.github.io/';
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
+        function loadResult() {
             var Q1 = localStorage.getItem('Q1');
             var Q2 = localStorage.getItem('Q2');
             var Q3 = localStorage.getItem('Q3');
@@ -91,62 +85,62 @@
 
             var resultImage = '';
 
-    if (Q1 === 'B' && Q2 === 'A' && Q3 === 'B' && Q4 === 'B') {
-        // INTJ
-        resultImage = 'img/result/test_result_passion_fruit.png';
-    } else if (Q1 === 'B' && Q2 === 'A' && Q3 === 'B' && Q4 === 'A') {
-        // INTP
-        resultImage = 'img/result/test_result_grapes.png'; 
-    } else if (Q1 === 'A' && Q2 === 'A' && Q3 === 'B' && Q4 === 'B') {
-        // ENTJ
-        resultImage = 'img/result/test_result_cherry.png';
-    } else if (Q1 === 'A' && Q2 === 'A' && Q3 === 'B' && Q4 === 'A') {
-        // ENTP
-        resultImage = 'img/result/test_result_wax_apple.png'; 
+            if (Q1 === 'B' && Q2 === 'A' && Q3 === 'B' && Q4 === 'B') {
+                // INTJ
+                resultImage = 'img/result/test_result_passion_fruit.png';
+            } else if (Q1 === 'B' && Q2 === 'A' && Q3 === 'B' && Q4 === 'A') {
+                // INTP
+                resultImage = 'img/result/test_result_grapes.png';
+            } else if (Q1 === 'A' && Q2 === 'A' && Q3 === 'B' && Q4 === 'B') {
+                // ENTJ
+                resultImage = 'img/result/test_result_cherry.png';
+            } else if (Q1 === 'A' && Q2 === 'A' && Q3 === 'B' && Q4 === 'A') {
+                // ENTP
+                resultImage = 'img/result/test_result_wax_apple.png';
+            } else if (Q1 === 'B' && Q2 === 'A' && Q3 === 'A' && Q4 === 'B') {
+                // INFJ
+                resultImage = 'img/result/test_result_guava.png';
+            } else if (Q1 === 'B' && Q2 === 'A' && Q3 === 'A' && Q4 === 'A') {
+                // INFP
+                resultImage = 'img/result/test_result_banana.png';
+            } else if (Q1 === 'A' && Q2 === 'A' && Q3 === 'A' && Q4 === 'B') {
+                // ENFJ
+                resultImage = 'img/result/test_result_kiwi.png';
+            } else if (Q1 === 'A' && Q2 === 'A' && Q3 === 'A' && Q4 === 'A') {
+                // ENFP
+                resultImage = 'img/result/test_result_starfruit.png';
+            } else if (Q1 === 'B' && Q2 === 'B' && Q3 === 'B' && Q4 === 'B') {
+                // ISTJ
+                resultImage = 'img/result/test_result_jujube.png';
+            } else if (Q1 === 'B' && Q2 === 'B' && Q3 === 'A' && Q4 === 'B') {
+                // ISFJ
+                resultImage = 'img/result/test_result_strawberry.png';
+            } else if (Q1 === 'A' && Q2 === 'B' && Q3 === 'B' && Q4 === 'B') {
+                // ESTJ
+                resultImage = 'img/result/test_result_apple.png';
+            } else if (Q1 === 'A' && Q2 === 'B' && Q3 === 'A' && Q4 === 'B') {
+                // ESFJ
+                resultImage = 'img/result/test_result_watermelon.png';
+            } else if (Q1 === 'B' && Q2 === 'B' && Q3 === 'B' && Q4 === 'A') {
+                // ISTP
+                resultImage = 'img/result/test_result_tomato.png';
+            } else if (Q1 === 'B' && Q2 === 'B' && Q3 === 'A' && Q4 === 'A') {
+                // ISFP
+                resultImage = 'img/result/test_result_mango.png';
+            } else if (Q1 === 'A' && Q2 === 'B' && Q3 === 'B' && Q4 === 'A') {
+                // ESTP
+                resultImage = 'img/result/test_result_orange.png';
+            } else if (Q1 === 'A' && Q2 === 'B' && Q3 === 'A' && Q4 === 'A') {
+                // ESFP
+                resultImage = 'img/result/test_result_pineapple.png';
+            }
 
-    } else if (Q1 === 'B' && Q2 === 'A' && Q3 === 'A' && Q4 === 'B') {
-        // INFJ
-        resultImage = 'img/result/test_result_guava.png';   
-    } else if (Q1 === 'B' && Q2 === 'A' && Q3 === 'A' && Q4 === 'A') {
-        // INFP
-        resultImage = 'img/result/test_result_banana.png';   
-    } else if (Q1 === 'A' && Q2 === 'A' && Q3 === 'A' && Q4 === 'B') {
-        // ENFJ
-        resultImage = 'img/result/test_result_kiwi.png';
-    } else if (Q1 === 'A' && Q2 === 'A' && Q3 === 'A' && Q4 === 'A') {
-        // ENFP
-        resultImage = 'img/result/test_result_starfruit.png';
-    
-
-    } else if (Q1 === 'B' && Q2 === 'B' && Q3 === 'B' && Q4 === 'B') {
-        // ISTJ
-        resultImage = 'img/result/test_result_jujube.png'; 
-    } else if (Q1 === 'B' && Q2 === 'B' && Q3 === 'A' && Q4 === 'B') {
-        // ISFJ
-        resultImage = 'img/result/test_result_strawberry.png'; 
-    } else if (Q1 === 'A' && Q2 === 'B' && Q3 === 'B' && Q4 === 'B') {
-        // ESTJ
-        resultImage = 'img/result/test_result_apple.png'; 
-    } else if (Q1 === 'A' && Q2 === 'B' && Q3 === 'A' && Q4 === 'B') {
-        // ESFJ
-        resultImage = 'img/result/test_result_watermelon.png'; 
-   
-    } else if (Q1 === 'B' && Q2 === 'B' && Q3 === 'B' && Q4 === 'A') {
-        // ISTP
-        resultImage = 'img/result/test_result_tomato.png'; 
-    } else if (Q1 === 'B' && Q2 === 'B' && Q3 === 'A' && Q4 === 'A') {
-        // ISFP
-        resultImage = 'img/result/test_result_mango.png'; 
-    } else if (Q1 === 'A' && Q2 === 'B' && Q3 === 'B' && Q4 === 'A') {
-        // ESTP
-        resultImage = 'img/result/test_result_orange.png'; 
-    } else if (Q1 === 'A' && Q2 === 'B' && Q3 === 'A' && Q4 === 'A') {
-        // ESFP
-        resultImage = 'img/result/test_result_pineapple.png'; 
-    }
-
+            // 更新桌面版和手機版的圖片
             document.getElementById('resultImage').src = resultImage;
-        });
+            document.getElementById('resultImageMobile').src = resultImage;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadResult);
 
         function copyToClipboard() {
             var testUrl = 'https://yeeve0106.github.io/fruit.github.io/'; // 取得首頁的 URL
@@ -156,7 +150,6 @@
                 alert('無法複製網址：' + err); // 複製失敗後顯示錯誤訊息
             });
         }
-
     </script>
 
 </body>
