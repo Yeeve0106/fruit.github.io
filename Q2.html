@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找到你的命定水果！</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="mycss.css">
+
+    <style>
+        .btn-oval {
+            border-radius: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .btn-square {
+            border-radius: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="bg1 d-none d-lg-flex">
+        <div class="text-center">
+            <img id="question" src="img/QA/Question-02.png" alt="" class="title2 m-auto fade-in">
+            <img id="questionImage" src="img/QA/Q2.png" alt="" class="title m-auto bounce">
+
+            <button id="optionA" class="btn btn-light btn-outline-info fade-in btn-square"
+                onclick="selectOption('A')">A.昨天睡覺夢到自己吃著奇異果騎著奇異鳥</button>
+
+            <button id="optionB" class="btn btn-light btn-outline-info fade-in btn-square"
+                onclick="selectOption('B')">B.最近上班遇到的各種奇怪的顧客</button>
+
+            <div style="margin-top: 30px;">
+                <button id="NextButton" class="btn btn-light btn-outline-warning btn-lg btn-oval"
+                    onclick="goToNext()">進入下一題</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg2 d-flex d-lg-none">
+        <div class="text-center">
+            <img id="questionMobile" src="img/QA/Question-02.png" alt="" class="title3 m-auto fade-in">
+            <img id="questionImageMobile" src="img/QA/Q2.png" alt="" class="title m-auto bounce">
+
+            <button id="optionAMobile" class="btn btn-light btn-outline-info fade-in btn-square"
+                onclick="selectOptionMobile('A')">A.昨天夢到自己吃奇異果騎奇異鳥</button>
+
+            <br>
+            <br>
+
+            <button id="optionBMobile" class="btn btn-light btn-outline-info fade-in btn-square"
+                onclick="selectOptionMobile('B')">B.最近上班遇到的各種奇怪的顧客</button>
+
+            <br>
+            <br>
+
+            <button id="NextButtonMobile" class="btn btn-light btn-outline-warning btn-lg btn-oval"
+                onclick="goToNextMobile()">進入下一題</button>
+        </div>
+    </div>
+
+    <footer class="bg-opacity-50 bg-warning py-3 text-center">
+        <b class="text-danger opacity-50 m-3">測驗你的命定水果！</b>
+    </footer>
+
+    <script>
+        var SelectA = 0;
+        var SelectB = 0;
+        var selectedOption = ''; // 新增此變數用來存儲選擇的選項
+
+        function selectOption(option) {
+            var optionA = document.getElementById('optionA');
+            var optionB = document.getElementById('optionB');
+            var questionImage = document.getElementById('questionImage');
+
+            if (option === 'A' && SelectA === 0) {
+                SelectA = 1;
+                SelectB = 0;
+                selectedOption = 'A'; // 更新選擇的選項
+                optionA.classList.add('active');
+                optionB.classList.remove('active');
+                questionImage.src = 'img/QA/Q2_A.png';
+
+            } else if (option === 'B' && SelectB === 0) {
+                SelectB = 1;
+                SelectA = 0;
+                selectedOption = 'B'; // 更新選擇的選項
+                optionA.classList.remove('active');
+                optionB.classList.add('active');
+                questionImage.src = 'img/QA/Q2_B.png';
+
+            } else if (option === 'A' && SelectA === 1) {
+                SelectA = 0;
+                selectedOption = ''; // 清除選擇的選項
+                optionA.classList.remove('active');
+                questionImage.src = 'img/QA/Q2.png';
+
+            } else if (option === 'B' && SelectB === 1) {
+                SelectB = 0;
+                selectedOption = ''; // 清除選擇的選項
+                optionB.classList.remove('active');
+                questionImage.src = 'img/QA/Q2.png';
+            }
+        }
+
+        function selectOptionMobile(option) {
+            var optionA = document.getElementById('optionAMobile');
+            var optionB = document.getElementById('optionBMobile');
+            var questionImage = document.getElementById('questionImageMobile');
+
+            if (option === 'A' && SelectA === 0) {
+                SelectA = 1;
+                SelectB = 0;
+                selectedOption = 'A'; // 更新選擇的選項
+                optionA.classList.add('active');
+                optionB.classList.remove('active');
+                questionImage.src = 'img/QA/Q2_A.png';
+
+            } else if (option === 'B' && SelectB === 0) {
+                SelectB = 1;
+                SelectA = 0;
+                selectedOption = 'B'; // 更新選擇的選項
+                optionA.classList.remove('active');
+                optionB.classList.add('active');
+                questionImage.src = 'img/QA/Q2_B.png';
+
+            } else if (option === 'A' && SelectA === 1) {
+                SelectA = 0;
+                selectedOption = ''; // 清除選擇的選項
+                optionA.classList.remove('active');
+                questionImage.src = 'img/QA/Q2.png';
+
+            } else if (option === 'B' && SelectB === 1) {
+                SelectB = 0;
+                selectedOption = ''; // 清除選擇的選項
+                optionB.classList.remove('active');
+                questionImage.src = 'img/QA/Q2.png';
+            }
+        }
+
+        function goToNext() {
+            if (selectedOption) {
+                var img = document.getElementById('questionImage');
+                var question = document.getElementById('question');
+                var optionA = document.getElementById('optionA');
+                var optionB = document.getElementById('optionB');
+                var button = document.getElementById('NextButton');
+
+                img.classList.add('bounce-disappear'); // 添加彈跳消失動畫效果的類別
+                question.classList.add('fade-out'); // 添加淡出動畫效果的類別
+                optionA.classList.add('fade-out'); // 添加淡出動畫效果的類別
+                optionB.classList.add('fade-out'); // 添加淡出動畫效果的類別
+
+                setTimeout(function () {
+                    // 執行跳轉至下一頁或其他操作
+                    window.location.href = 'Q3.html';
+                }, 1000); // 要和動畫時間長度一致
+
+                localStorage.setItem('Q2', selectedOption); // 儲存選擇的選項到 localStorage
+            } else {
+                alert('請選擇一個選項再進入下一題');
+            }
+        }
+
+        function goToNextMobile() {
+            if (selectedOption) {
+                var img = document.getElementById('questionImageMobile');
+                var question = document.getElementById('questionMobile');
+                var optionA = document.getElementById('optionAMobile');
+                var optionB = document.getElementById('optionBMobile');
+                var button = document.getElementById('NextButtonMobile');
+
+                img.classList.add('bounce-disappear'); // 添加彈跳消失動畫效果的類別
+                question.classList.add('fade-out'); // 添加淡出動畫效果的類別
+                optionA.classList.add('fade-out'); // 添加淡出動畫效果的類別
+                optionB.classList.add('fade-out'); // 添加淡出動畫效果的類別
+
+                setTimeout(function () {
+                    // 執行跳轉至下一頁或其他操作
+                    window.location.href = 'Q3.html';
+                }, 1000); // 要和動畫時間長度一致
+
+                localStorage.setItem('Q2', selectedOption); // 儲存選擇的選項到 localStorage
+            } else {
+                alert('請選擇一個選項再進入下一題');
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
