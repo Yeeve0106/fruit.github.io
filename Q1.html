@@ -56,19 +56,19 @@
             <img id="questionImageMobile" src="img/QA/Q1.png" alt="" class="title m-auto bounce">
 
             <button id="optionAMobile" class="btn btn-light btn-outline-info fade-in btn-square"
-                onclick="selectOption('A')">A. 找三五好友一起品嘗各種水果</button>
+                onclick="selectOptionMobile('A')">A. 找三五好友一起品嘗各種水果</button>
 
             <br>
             <br>
 
             <button id="optionBMobile" class="btn btn-light btn-outline-info fade-in btn-square"
-                onclick="selectOption('B')">B. 自己一個人尋找珍奇異果</button>
+                onclick="selectOptionMobile('B')">B. 自己一個人尋找珍奇異果</button>
 
             <br>
             <br>
 
             <button id="NextButtonMobile" class="btn btn-light btn-outline-warning btn-lg btn-oval fade-in"
-                onclick="goToNext()">進入下一題</button>
+                onclick="goToNextMobile()">進入下一題</button>
         </div>
     </div>
 
@@ -77,58 +77,92 @@
     </footer>
 
     <script>
-        var selectedOption = ''; // 定義選擇的選項變數
+        var SelectA = 0;
+        var SelectB = 0;
+        var selectedOption = ''; // 新增此變數用來存儲選擇的選項
 
         function selectOption(option) {
             var optionA = document.getElementById('optionA');
             var optionB = document.getElementById('optionB');
-            var optionAMobile = document.getElementById('optionAMobile');
-            var optionBMobile = document.getElementById('optionBMobile');
             var questionImage = document.getElementById('questionImage');
-            var questionImageMobile = document.getElementById('questionImageMobile');
 
-            if (option === 'A') {
+            if (option === 'A' && SelectA === 0) {
+                SelectA = 1;
+                SelectB = 0;
                 selectedOption = 'A'; // 更新選擇的選項
                 optionA.classList.add('active');
                 optionB.classList.remove('active');
-                optionAMobile.classList.add('active');
-                optionBMobile.classList.remove('active');
                 questionImage.src = 'img/QA/Q1_A.png';
-                questionImageMobile.src = 'img/QA/Q1_A.png';
-            } else if (option === 'B') {
+
+            } else if (option === 'B' && SelectB === 0) {
+                SelectB = 1;
+                SelectA = 0;
                 selectedOption = 'B'; // 更新選擇的選項
                 optionA.classList.remove('active');
                 optionB.classList.add('active');
-                optionAMobile.classList.remove('active');
-                optionBMobile.classList.add('active');
                 questionImage.src = 'img/QA/Q1_B.png';
-                questionImageMobile.src = 'img/QA/Q1_B.png';
+
+            } else if (option === 'A' && SelectA === 1) {
+                SelectA = 0;
+                selectedOption = ''; // 清除選擇的選項
+                optionA.classList.remove('active');
+                questionImage.src = 'img/QA/Q1.png';
+
+            } else if (option === 'B' && SelectB === 1) {
+                SelectB = 0;
+                selectedOption = ''; // 清除選擇的選項
+                optionB.classList.remove('active');
+                questionImage.src = 'img/QA/Q1.png';
+            }
+        }
+
+        function selectOptionMobile(option) {
+            var optionA = document.getElementById('optionAMobile');
+            var optionB = document.getElementById('optionBMobile');
+            var questionImage = document.getElementById('questionImageMobile');
+
+            if (option === 'A' && SelectA === 0) {
+                SelectA = 1;
+                SelectB = 0;
+                selectedOption = 'A'; // 更新選擇的選項
+                optionA.classList.add('active');
+                optionB.classList.remove('active');
+                questionImage.src = 'img/QA/Q1_A.png';
+
+            } else if (option === 'B' && SelectB === 0) {
+                SelectB = 1;
+                SelectA = 0;
+                selectedOption = 'B'; // 更新選擇的選項
+                optionA.classList.remove('active');
+                optionB.classList.add('active');
+                questionImage.src = 'img/QA/Q1_B.png';
+
+            } else if (option === 'A' && SelectA === 1) {
+                SelectA = 0;
+                selectedOption = ''; // 清除選擇的選項
+                optionA.classList.remove('active');
+                questionImage.src = 'img/QA/Q1.png';
+
+            } else if (option === 'B' && SelectB === 1) {
+                SelectB = 0;
+                selectedOption = ''; // 清除選擇的選項
+                optionB.classList.remove('active');
+                questionImage.src = 'img/QA/Q1.png';
             }
         }
 
         function goToNext() {
             if (selectedOption) {
                 var img = document.getElementById('questionImage');
-                var imgMobile = document.getElementById('questionImageMobile');
                 var question = document.getElementById('question');
-                var questionMobile = document.getElementById('questionMobile');
                 var optionA = document.getElementById('optionA');
                 var optionB = document.getElementById('optionB');
-                var optionAMobile = document.getElementById('optionAMobile');
-                var optionBMobile = document.getElementById('optionBMobile');
                 var button = document.getElementById('NextButton');
-                var buttonMobile = document.getElementById('NextButtonMobile');
 
                 img.classList.add('bounce-disappear'); // 添加彈跳消失動畫效果的類別
-                imgMobile.classList.add('bounce-disappear'); // 添加彈跳消失動畫效果的類別
                 question.classList.add('fade-out'); // 添加淡出動畫效果的類別
-                questionMobile.classList.add('fade-out'); // 添加淡出動畫效果的類別
                 optionA.classList.add('fade-out'); // 添加淡出動畫效果的類別
                 optionB.classList.add('fade-out'); // 添加淡出動畫效果的類別
-                optionAMobile.classList.add('fade-out'); // 添加淡出動畫效果的類別
-                optionBMobile.classList.add('fade-out'); // 添加淡出動畫效果的類別
-                button.classList.add('fade-out'); // 添加淡出動畫效果的類別
-                buttonMobile.classList.add('fade-out'); // 添加淡出動畫效果的類別
 
                 setTimeout(function () {
                     // 執行跳轉至下一頁或其他操作
@@ -140,6 +174,31 @@
                 alert('請選擇一個選項再進入下一題');
             }
         }
+
+        function goToNextMobile() {
+            if (selectedOption) {
+                var img = document.getElementById('questionImageMobile');
+                var question = document.getElementById('questionMobile');
+                var optionA = document.getElementById('optionAMobile');
+                var optionB = document.getElementById('optionBMobile');
+                var button = document.getElementById('NextButtonMobile');
+
+                img.classList.add('bounce-disappear'); // 添加彈跳消失動畫效果的類別
+                question.classList.add('fade-out'); // 添加淡出動畫效果的類別
+                optionA.classList.add('fade-out'); // 添加淡出動畫效果的類別
+                optionB.classList.add('fade-out'); // 添加淡出動畫效果的類別
+
+                setTimeout(function () {
+                    // 執行跳轉至下一頁或其他操作
+                    window.location.href = 'Q2.html';
+                }, 1000); // 要和動畫時間長度一致
+
+                localStorage.setItem('Q1', selectedOption); // 儲存選擇的選項到 localStorage
+            } else {
+                alert('請選擇一個選項再進入下一題');
+            }
+        }
+
     </script>
 </body>
 
